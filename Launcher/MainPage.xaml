@@ -33,15 +33,13 @@
 
                     <DataTemplate>
                         <StackLayout
-                             Margin="0"
-                             Padding="0"
                              Orientation="Horizontal" 
                              VerticalOptions="Start">
                             <Label
                                        Text="{Binding serviceName}"
                                        VerticalOptions="Center" />
                             <CheckBox IsChecked="False"  
-                                 CheckedChanged="OnCheckBoxCheckedChanged" />
+                                 />
 
                         </StackLayout>
                     </DataTemplate>
