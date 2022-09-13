@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Launcher.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="5"
+            VerticalOptions="Center">
+
+            <Frame Margin="10"
+       BorderColor="Black"
+       CornerRadius="15"
+       HeightRequest="60"
+       WidthRequest="250"
+       IsClippedToBounds="True"
+       HorizontalOptions="Center"
+       VerticalOptions="Center">
+                <Image Source="apg_logo.png"
+         Aspect="AspectFill"
+         Margin="-20"
+         HeightRequest="70"
+         WidthRequest="250" />
+            </Frame>
+            <Label
+                Text="APG Launcher"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="16"
+                HorizontalOptions="Center" />
+            
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackLayout
+                             Margin="0"
+                             Padding="0"
+                             Orientation="Horizontal" 
+                             VerticalOptions="Start">
+                            <Label
+                                       Text="{Binding serviceName}"
+                                       VerticalOptions="Center" />
+                            <CheckBox IsChecked="False"  
+                                 CheckedChanged="OnCheckBoxCheckedChanged" />
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Start"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
