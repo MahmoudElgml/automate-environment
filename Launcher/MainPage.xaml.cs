@@ -1,24 +1,30 @@
-﻿using Microsoft.Win32;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Launcher;
 
 public partial class MainPage : ContentPage
 {
-    public static string visualStodioExe => @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe";
-    public static string dockerExe => @"C:\Program Files\Docker\Docker\Docker Desktop.exe";
-    public static string vsCodeExe => LocateExe("code");
+    public static string visualStodioExePath => @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe";
+    public static string dockerExePath => @"C:\Program Files\Docker\Docker\Docker Desktop.exe";
+    public static string vsCodeExePath => @"C:\Users\Mahmoud\AppData\Local\Programs\Microsoft VS Code\Code.exe";
 
     public List<APGService> visualStuioServicesList = new List<APGService>
         {
-            new APGService { serviceName = "APGFundamental", servicePath = "APG.FundamentalModulesAPIs\\APGFundamentals.sln",exePath=visualStodioExe},
-            new APGService { serviceName = "APGMembership", servicePath = "APG.MembershipModulesAPIs\\APGMembership.sln",exePath=visualStodioExe},
-            new APGService { serviceName = "APGPortalAPiGateway", servicePath = "APG.PortalAPIGateway\\APGPortalAPIGateway.sln", exePath = visualStodioExe},
-            new APGService { serviceName = "APGTransaction", servicePath = "APG.TransactionModulesAPIs\\APGTransaction.sln", exePath = visualStodioExe},
-            new APGService { serviceName = "APGExecution", servicePath = "APG.ExecutionModulesAPIs\\APGExecutions.sln", exePath = visualStodioExe},
-            new APGService { serviceName = "APGLog", servicePath = "APG.LogModulesAPIs\\APGLogs.sln", exePath = visualStodioExe},
-            new APGService { serviceName = "APGNotification", servicePath = "APG.NotificationModulesAPIs\\APGNotifications.sln", exePath = visualStodioExe}
+            new APGService { serviceName = "Docker", servicePath = null, exePath = dockerExePath},
+            new APGService { serviceName = "APGFundamental", servicePath = "APG.FundamentalModulesAPIs\\APGFundamentals.sln",exePath=visualStodioExePath},
+            new APGService { serviceName = "APGMembership", servicePath = "APG.MembershipModulesAPIs\\APGMembership.sln",exePath=visualStodioExePath},
+            new APGService { serviceName = "APGPortalAPiGateway", servicePath = "APG.PortalAPIGateway\\APGPortalAPIGateway.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGTransaction", servicePath = "APG.TransactionModulesAPIs\\APGTransaction.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGExecution", servicePath = "APG.ExecutionModulesAPIs\\APGExecutions.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGSmartBoxApiGateway", servicePath = "APG.SmartBoxAPIGateway\\APGSmartBoxAPIGateway.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGNotification", servicePath = "APG.NotificationModulesAPIs\\APGNotifications.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGLog", servicePath = "APG.LogModulesAPIs\\APGLogs.sln", exePath = visualStodioExePath},
+            new APGService { serviceName = "APGPortal", servicePath = "APG.Portal", exePath = vsCodeExePath},
+            new APGService { serviceName = "APGPortal.Proxy", servicePath = "APG.Portal.Proxy", exePath = vsCodeExePath},
+            new APGService { serviceName = "APGeCommerceSmartBox", servicePath = "APG.eCommerceSmartBox", exePath = vsCodeExePath},
+            new APGService { serviceName = "APGeCommerceSmartBox.Proxy", servicePath = "APG.eCommerceSmartBox.Proxy", exePath = vsCodeExePath}
         };
+
     public MainPage()
     {
         InitializeComponent();
