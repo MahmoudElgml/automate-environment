@@ -6,7 +6,7 @@ public partial class MainPage : ContentPage
 {
     public static string visualStodioExePath => @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe";
     public static string dockerExePath => @"C:\Program Files\Docker\Docker\Docker Desktop.exe";
-    public static string vsCodeExePath => @"C:\Users\Mahmoud\AppData\Local\Programs\Microsoft VS Code\Code.exe";
+    public static string vsCodeExePath => @$"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code\Code.exe";
 
     public List<APGService> visualStuioServicesList = new List<APGService>
         {
@@ -33,10 +33,11 @@ public partial class MainPage : ContentPage
 
     protected override void OnAppearing()
     {
+
         collectionView.ItemsSource = visualStuioServicesList;
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    private void OnStartClicked(object sender, EventArgs e)
     {
         var apgServicesRoot = @"D:\git-repos\amwal-pay\";
         var allCheckBoxex = collectionView.GetVisualTreeDescendants().OfType<CheckBox>().Where(p => p.IsLoaded && p.IsChecked).ToList();
@@ -49,24 +50,6 @@ public partial class MainPage : ContentPage
             }
         }
 
-    }
-
-    private static string LocateExe(String filename)
-    {
-        String path = Environment.GetEnvironmentVariable("path");
-        String[] folders = path.Split(';');
-        foreach (String folder in folders)
-        {
-            if (File.Exists(folder + filename))
-            {
-                return folder + filename;
-            }
-            else if (File.Exists(folder + "\\" + filename))
-            {
-                return folder + "\\" + filename;
-            }
-        }
-        return String.Empty;
     }
 
 }

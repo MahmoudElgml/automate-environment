@@ -48,10 +48,10 @@
             </CollectionView>
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="startBtn"
                 Text="Start"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="OnStartClicked"
                 HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
