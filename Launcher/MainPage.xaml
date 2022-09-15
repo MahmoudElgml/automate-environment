@@ -9,30 +9,26 @@
             VerticalOptions="Center">
 
             <Frame Margin="10"
-       BorderColor="Black"
-       CornerRadius="15"
-       HeightRequest="60"
-       WidthRequest="250"
-       IsClippedToBounds="True"
-       HorizontalOptions="Center"
-       VerticalOptions="Center">
+                   BorderColor="Black"
+                   CornerRadius="15"
+                   HeightRequest="60"
+                   WidthRequest="250"
+                   IsClippedToBounds="True"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
                 <Image Source="apg_logo.png"
-         Aspect="AspectFill"
-         Margin="-20"
-         HeightRequest="70"
-         WidthRequest="250" />
+                       Aspect="AspectFill"
+                       Margin="-20"
+                       HeightRequest="70"
+                       WidthRequest="250" />
             </Frame>
-            <Label
-                Text="APG Launcher"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="16"
-                HorizontalOptions="Center" />
             
             <CollectionView x:Name="collectionView">
 
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="3"
-                                     HorizontalItemSpacing="20">
+                                     HorizontalItemSpacing="20"
+                                     >
                     </GridItemsLayout>
                 </CollectionView.ItemsLayout>
                 
@@ -54,13 +50,13 @@
 
              <StackLayout
                  Orientation="Horizontal" 
-                 HorizontalOptions="Center"
-                 VerticalOptions="Center">
+                 HorizontalOptions="End"
+                 VerticalOptions="Center"
+                 Spacing="5"
+                 >
                  
                 <Label 
                 Text="Directory Not Selected"
-                FontSize="18"
-                FontAttributes="Bold"
                 x:Name="FolderLabel"
                 HorizontalOptions="Center" 
                 VerticalTextAlignment="Center"
@@ -68,7 +64,8 @@
 
                 <Button 
                 Text="Select APG Directory"
-                FontAttributes="Bold"
+                VerticalOptions="Center"
+                FontSize="Caption"
                 SemanticProperties.Hint="Allows you to pick a folder on the filesystem"
                 Clicked="OnPickFolderClicked"
                 HorizontalOptions="Center"/>
@@ -80,6 +77,10 @@
             <Button
                 x:Name="startBtn"
                 Text="Start"
+                BackgroundColor="Green"
+                TextColor="White"
+                FontSize="18"
+                FontAttributes="Bold"
                 SemanticProperties.Hint="Start APG Servises"
                 Clicked="OnStartClicked"
                 HorizontalOptions="Center"/>
