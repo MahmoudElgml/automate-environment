@@ -32,14 +32,11 @@
 
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="3"
-                                     HorizontalItemSpacing="20"
-                                     
-                                     >
-                        
+                                     HorizontalItemSpacing="20">
                     </GridItemsLayout>
                 </CollectionView.ItemsLayout>
+                
                 <CollectionView.ItemTemplate>
-
                     <DataTemplate>
                         <StackLayout
                              Orientation="Horizontal" 
@@ -47,9 +44,7 @@
                             <Label
                                        Text="{Binding serviceName}"
                                        VerticalOptions="Center" />
-                            <CheckBox IsChecked="False"  
-                                 />
-
+                            <CheckBox IsChecked="False"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -58,30 +53,26 @@
 
 
              <StackLayout
-                             Orientation="Horizontal" 
-                             HorizontalOptions="Center"
-                 VerticalOptions="Center"
-                 >
+                 Orientation="Horizontal" 
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+                 
                 <Label 
                 Text="Directory Not Selected"
                 FontSize="18"
                 FontAttributes="Bold"
                 x:Name="FolderLabel"
                 HorizontalOptions="Center" 
-                    VerticalTextAlignment="Center"
-                    VerticalOptions="Center"
-                    />
+                VerticalTextAlignment="Center"
+                VerticalOptions="Center"/>
 
                 <Button 
                 Text="Select APG Directory"
-                    
                 FontAttributes="Bold"
                 SemanticProperties.Hint="Allows you to pick a folder on the filesystem"
                 Clicked="OnPickFolderClicked"
-                HorizontalOptions="Center"
-                    />
-
-            </StackLayout>
+                HorizontalOptions="Center"/>
+             </StackLayout>
             
             
             
