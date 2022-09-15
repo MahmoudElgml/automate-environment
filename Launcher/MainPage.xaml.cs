@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Maui.Controls.Shapes;
+using System.Diagnostics;
 
 namespace Launcher;
 
@@ -7,6 +8,9 @@ public partial class MainPage : ContentPage
     public static string visualStodioExePath => @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe";
     public static string dockerExePath => @"C:\Program Files\Docker\Docker\Docker Desktop.exe";
     public static string vsCodeExePath => @$"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code\Code.exe";
+    public static string rootProjectsPath { get; set; }
+
+    private readonly IFolderPicker _folderPicker;
 
     public List<APGService> visualStuioServicesList = new List<APGService>
         {
@@ -25,10 +29,14 @@ public partial class MainPage : ContentPage
             new APGService { serviceName = "APGeCommerceSmartBox.Proxy", servicePath = "APG.eCommerceSmartBox.Proxy", exePath = vsCodeExePath}
         };
 
-    public MainPage()
+    public MainPage(IFolderPicker folderPicker)
     {
         InitializeComponent();
 
+        _folderPicker = folderPicker;
+
+        initializeStartup();
+        
     }
 
     protected override void OnAppearing()
@@ -52,6 +60,61 @@ public partial class MainPage : ContentPage
 
     }
 
+
+    private async void OnPickFolderClicked(object sender, EventArgs e)
+    {
+        //var pickedFolder = await _folderPicker.PickFolder();
+
+       // FolderLabel.Text = pickedFolder;
+
+       //var appDirectory= FileSystem.AppDataDirectory;
+       // using (StreamWriter sw = new StreamWriter(@"D:\defaultAPGDirectory.txt"))
+       // {
+       //         sw.WriteLine(pickedFolder);
+       // }
+
+       // using (StreamReader sr = new StreamReader(@"D:\defaultAPGDirectory.txt"))
+       // {
+       //     var text = sr.ReadToEnd();
+       // }
+
+        await UpdateDefaultLauncherDirectory();
+        SemanticScreenReader.Announce(FolderLabel.Text);
+    }
+
+
+    private async Task UpdateDefaultLauncherDirectory() {
+        var pickedFolder = await _folderPicker.PickFolder();
+
+        FolderLabel.Text = pickedFolder;
+
+        using (StreamWriter sw = new StreamWriter(@"D:\defaultAPGDirectory.txt"))
+        {
+            sw.WriteLine(pickedFolder);
+        }
+
+    }
+
+    private async Task initializeStartup()
+    {
+
+
+        try
+        {
+            using (StreamReader sr = new StreamReader(@"D:\defaultAPGDirectory.txt"))
+            {
+                rootProjectsPath = sr.ReadToEnd();
+                FolderLabel.Text = rootProjectsPath;
+            }
+        }
+        catch (Exception ex)
+        {
+           await UpdateDefaultLauncherDirectory ();
+        }
+
+    }
+
+
 }
 
 public class APGService
@@ -60,4 +123,5 @@ public class APGService
     public string servicePath { get; set; }
     public string exePath { get; set; }
 }
+
 

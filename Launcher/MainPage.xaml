@@ -28,7 +28,9 @@
                 FontSize="16"
                 HorizontalOptions="Center" />
             
-            <CollectionView x:Name="collectionView">
+            <CollectionView x:Name="collectionView"
+                            
+                            >
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
@@ -47,10 +49,27 @@
                 
             </CollectionView>
 
+
+            <Label 
+                Text=""
+                Grid.Row="0"
+                FontSize="18"
+                FontAttributes="Bold"
+                x:Name="FolderLabel"
+                HorizontalOptions="Center" />
+
+            <Button 
+                Text="Select APG Directory"
+                FontAttributes="Bold"
+                Grid.Row="1"
+                SemanticProperties.Hint="Allows you to pick a folder on the filesystem"
+                Clicked="OnPickFolderClicked"
+                HorizontalOptions="Center" />
+
             <Button
                 x:Name="startBtn"
                 Text="Start"
-                SemanticProperties.Hint="Counts the number of times you click"
+                SemanticProperties.Hint="Start APG Servises"
                 Clicked="OnStartClicked"
                 HorizontalOptions="Center"/>
 
