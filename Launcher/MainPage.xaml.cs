@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Controls.Shapes;
+﻿    using Microsoft.Maui.Controls.Shapes;
 using System.Diagnostics;
 
 namespace Launcher;
@@ -63,21 +63,6 @@ public partial class MainPage : ContentPage
 
     private async void OnPickFolderClicked(object sender, EventArgs e)
     {
-        //var pickedFolder = await _folderPicker.PickFolder();
-
-       // FolderLabel.Text = pickedFolder;
-
-       //var appDirectory= FileSystem.AppDataDirectory;
-       // using (StreamWriter sw = new StreamWriter(@"D:\defaultAPGDirectory.txt"))
-       // {
-       //         sw.WriteLine(pickedFolder);
-       // }
-
-       // using (StreamReader sr = new StreamReader(@"D:\defaultAPGDirectory.txt"))
-       // {
-       //     var text = sr.ReadToEnd();
-       // }
-
         await UpdateDefaultLauncherDirectory();
         SemanticScreenReader.Announce(FolderLabel.Text);
     }
