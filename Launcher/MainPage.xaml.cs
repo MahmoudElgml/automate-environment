@@ -47,14 +47,20 @@ public partial class MainPage : ContentPage
 
     private void OnStartClicked(object sender, EventArgs e)
     {
-        var apgServicesRoot = rootProjectsPath;
+        using (StreamReader sr = new StreamReader(@"D:\defaultAPGDirectory.txt"))
+        {
+            rootProjectsPath = sr.ReadLine();
+        }
+        
         var allCheckBoxex = collectionView.GetVisualTreeDescendants().OfType<CheckBox>().Where(p => p.IsLoaded && p.IsChecked).ToList();
         foreach (CheckBox chbx in allCheckBoxex)
         {
             var service = chbx.BindingContext as APGService;
             if (!string.IsNullOrWhiteSpace(service.exePath))
             {
-                Process.Start(service.exePath, apgServicesRoot + service.servicePath);
+                #if WINDOWS
+                Process.Start(service.exePath, rootProjectsPath + service.servicePath);
+                #endif
             }
         }
 
