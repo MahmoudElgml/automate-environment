@@ -71,11 +71,14 @@ public partial class MainPage : ContentPage
     private async Task UpdateDefaultLauncherDirectory() {
         var pickedFolder = await _folderPicker.PickFolder();
 
-        FolderLabel.Text = pickedFolder;
 
-        using (StreamWriter sw = new StreamWriter(@"D:\defaultAPGDirectory.txt"))
+        if (!string.IsNullOrEmpty(pickedFolder))
         {
-            sw.WriteLine(pickedFolder);
+            FolderLabel.Text = pickedFolder;
+            using (StreamWriter sw = new StreamWriter(@"D:\defaultAPGDirectory.txt"))
+            {
+                sw.WriteLine(pickedFolder);
+            }
         }
 
     }
@@ -92,7 +95,7 @@ public partial class MainPage : ContentPage
                 FolderLabel.Text = rootProjectsPath;
             }
         }
-        catch (Exception ex)
+        catch (FileNotFoundException)
         {
            await UpdateDefaultLauncherDirectory ();
         }
