@@ -7,6 +7,13 @@
         <VerticalStackLayout
             Padding="5"
             VerticalOptions="Center">
+            <Button 
+                Text="Reset Selection"
+                VerticalOptions="Start"
+                FontSize="Caption"
+                SemanticProperties.Hint="Reset All Selected Items"
+                Clicked="OnResetSelectionClicked"
+                HorizontalOptions="Start"/>
 
             <Frame Margin="10"
                    BorderColor="Black"

@@ -73,6 +73,10 @@ public partial class MainPage : ContentPage
         SemanticScreenReader.Announce(FolderLabel.Text);
     }
 
+    private void OnResetSelectionClicked(object sender, EventArgs e)
+    {
+        collectionView.GetVisualTreeDescendants().OfType<CheckBox>().Where(p => p.IsLoaded && p.IsChecked).ToList().ForEach(chbx => chbx.IsChecked = false);
+    }
 
     private async Task UpdateDefaultLauncherDirectory() {
         var pickedFolder = await _folderPicker.PickFolder();
